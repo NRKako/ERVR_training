@@ -20,8 +20,8 @@
       
 	 
 		<a-assets>
-			<a-entity oculus-touch-controls="hand: right" triggerdown-logging></a-entity>
-			<a-entity laser-controls="hand: right"></a-entity>
+			<!-- <a-entity oculus-touch-controls="hand: right" triggerdown-logging></a-entity>
+			<a-entity laser-controls="hand: right"></a-entity> -->
 
 			<a-mixin id="FeelingsIcon" geometry="primitive:plane;height:1" material="transparent:true;shader:flat" event-set__1="_event: mouseenter; geometry.height: 1.6" event-set__2="_event: mouseleave; geometry.height: 1"></a-mixin>
 			<a-mixin id="TestImage" geometry="primitive:plane;height:1" material="transparent:true;shader:flat"></a-mixin>
@@ -29,8 +29,8 @@
 			<video id="SphereVideo" crossorigin="anonymous" autoplay loop src="" webkit-playsinline ></video>
 		</a-assets>
 
-		<!-- <a-entity oculus-touch-controls="hand: right" triggerdown-logging></a-entity>
-		<a-entity laser-controls="hand: right"></a-entity> -->
+		<a-entity oculus-touch-controls="hand: right" triggerdown-logging></a-entity>
+		<a-entity laser-controls="hand: right"></a-entity>
 	
 		<a-sky id="WhiteSky" color="black" radius="50" visible="false">
 			<a-entity position="-0.449 2.336 -6.724" rotation="0 -180 0" scale="10 10 10" geometry="primitive:plane" material="transparent:true;shader:flat"></a-entity>
