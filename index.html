@@ -15,7 +15,8 @@
 	</head>
 
   	<body>
-	<a-scene id="scenes" vr-mode-ui inspector keyboard-shortcuts screenshot device-orientation-permission-ui>
+	<!-- <a-scene id="scenes" vr-mode-ui inspector keyboard-shortcuts screenshot device-orientation-permission-ui> -->
+	<a-scene id="scenes">
       
 	 
 		<a-assets>
@@ -141,7 +142,7 @@
 			// });
 			
 			var bugout = new debugout();
-			setTimeout(startTest, 2 * 1000);
+			setTimeout(startTest, 10 * 1000);
 			//Change second number equal to the number of seconds the video will last for.
 			
 			//#9
@@ -244,18 +245,16 @@
 			var picnum = 0;
 			const startTest = () => {	
 		
-			images.forEach(img => {
-				$('a-assets').append( `<img id ='k${img.imgNum}' crossorigin='anonymous' preload='auto' src='${img.imgURL}'>` );
-				$('a-scene').append(`<a-entity id='p${img.imgNum}' position='0 1 -4' scale='0 0 0' rotation='0 0 0'><a-entity mixin='TestImage' position='0 0.25 0' scale = '1 1 1' material='src:#k${img.imgNum};'></a-entity> </a-entity>`);
-				// let temp = "p" + picnum;
-				picturelist.push(`p${img.imgNum}`);
-				namelist.push(img.imgName.substring(0, img.imgName.length-4));
-				picnum++;
-			})
-			console.log("picture list: ", picturelist, "name list: ", namelist)
+				images.forEach(img => {
+					$('a-assets').append( `<img id ='k${img.imgNum}' crossorigin='anonymous' preload='auto' src='${img.imgURL}'>` );
+					$('a-scene').append(`<a-entity id='p${img.imgNum}' position='0 1 -4' scale='0 0 0' rotation='0 0 0'><a-entity mixin='TestImage' position='0 0.25 0' scale = '1 1 1' material='src:#k${img.imgNum};'></a-entity> </a-entity>`);
+					// let temp = "p" + picnum;
+					picturelist.push(`p${img.imgNum}`);
+					namelist.push(img.imgName.substring(0, img.imgName.length-4));
+					picnum++;
+				})
+				console.log("picture list: ", picturelist, "name list: ", namelist)
 		
-				
-			
 				//pause video
 				// var video = document.getElementById('SphereVideo');
 				// video.pause()
