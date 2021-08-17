@@ -30,7 +30,7 @@
 		</a-assets>
 
 		<!-- <a-entity oculus-touch-controls="hand: right" triggerdown-logging></a-entity> -->
-		<a-entity hand-controls laser-controls="hand: right"></a-entity>
+		<a-entity oculus-touch-controls laser-controls="hand: right"></a-entity>
 	
 		<a-sky id="WhiteSky" color="black" radius="50" visible="false">
 			<a-entity position="-0.449 2.336 -6.724" rotation="0 -180 0" scale="10 10 10" geometry="primitive:plane" material="transparent:true;shader:flat"></a-entity>
@@ -66,15 +66,15 @@
 			<a-entity id="HowYaFeelingText2" material="color:white" position="0 .70 -1" scale="5 5 5" text__qtext="value: Not at all positive--------------------------------Very positive;side:double;align:center;color:blue;"></a-entity>
 			<a-entity id="HowYaFeelingText3" material="color:blue" position="0 0 -1" scale="5 5 5" text__qtext="value:1        2        3        4        5        6        7        8        9;side:double;align:center;color:blue;"></a-entity>
 
-			<a-plane mixin="FeelingsIcon" id="p1" position="-2.3 0 -1" scale = ".5 1 1" color="#FF8C00"></a-plane>
-			<a-plane mixin="FeelingsIcon" id="p2" position="-1.725 0 -1" scale = ".5 1 1" color="#EC7F0F"></a-plane>
-			<a-plane mixin="FeelingsIcon" id="p3" position="-1.15 0 -1" scale = ".5 1 1" color="#D9711F"></a-plane>
-			<a-plane mixin="FeelingsIcon" id="p4" position="-0.575 0 -1" scale = ".5 1 1" color="#C6642E"></a-plane>
-			<a-plane mixin="FeelingsIcon" id="p5" position="0 0 -1" scale = ".5 1 1" color="#B4573D"></a-plane>
-			<a-plane mixin="FeelingsIcon" id="p6" position=".575 0 -1" scale = ".5 1 1" color="#A1494C"></a-plane>
-			<a-plane mixin="FeelingsIcon" id="p7" position="1.15 0 -1" scale = ".5 1 1" color="#8E3C5C"></a-plane>
-			<a-plane mixin="FeelingsIcon" id="p8" position="1.725 0 -1" scale = ".5 1 1" color="#7B2E6B"></a-plane>
-			<a-plane mixin="FeelingsIcon" id="p9" position="2.3 0 -1" scale = ".5 1 1" color="#68217A"></a-plane>
+			<a-plane mixin="FeelingsIcon" onmousedown="log1()" position="-2.3 0 -1" scale = ".5 1 1" color="#FF8C00"></a-plane>
+			<a-plane mixin="FeelingsIcon" onmousedown="log2()" position="-1.725 0 -1" scale = ".5 1 1" color="#EC7F0F"></a-plane>
+			<a-plane mixin="FeelingsIcon" onmousedown="log3()" position="-1.15 0 -1" scale = ".5 1 1" color="#D9711F"></a-plane>
+			<a-plane mixin="FeelingsIcon" onmousedown="log4()" position="-0.575 0 -1" scale = ".5 1 1" color="#C6642E"></a-plane>
+			<a-plane mixin="FeelingsIcon" onmousedown="log5()" position="0 0 -1" scale = ".5 1 1" color="#B4573D"></a-plane>
+			<a-plane mixin="FeelingsIcon" onmousedown="log6()" position=".575 0 -1" scale = ".5 1 1" color="#A1494C"></a-plane>
+			<a-plane mixin="FeelingsIcon" onmousedown="log7()" position="1.15 0 -1" scale = ".5 1 1" color="#8E3C5C"></a-plane>
+			<a-plane mixin="FeelingsIcon" onmousedown="log8()" position="1.725 0 -1" scale = ".5 1 1" color="#7B2E6B"></a-plane>
+			<a-plane mixin="FeelingsIcon" onmousedown="log9()" position="2.3 0 -1" scale = ".5 1 1" color="#68217A"></a-plane>
         </a-entity>
 		
 		<a-entity id="FeelingsNeg" position="0 1.5 -4" scale="0 0 0" rotation="0 0 0">
@@ -83,15 +83,15 @@
 			<a-entity id="HowYaFeelingText2" material="color:white" position="0 -.70 -1" scale="5 5 5" text__qtext="value: Not at all negative------------------------------Very negative;side:double;align:center;color:green;"></a-entity>
 			<a-entity id="HowYaFeelingText3" material="color:green" position="0 0 -1" scale="5 5 5" text__qtext="value:1        2        3        4        5        6        7        8        9;side:double;align:center;color:green;"></a-entity>
 
-			<a-plane mixin="FeelingsIcon" id="n1" position="-2.3 0 -1" scale=".5 1 1" color="#FF8C00"></a-plane>
-			<a-plane mixin="FeelingsIcon" id="n2" position="-1.725 0 -1" scale = ".5 1 1" color="#EC7F0F"></a-plane>
-			<a-plane mixin="FeelingsIcon" id="n3" position="-1.15 0 -1" scale = ".5 1 1" color="#D9711F"></a-plane>
-			<a-plane mixin="FeelingsIcon" id="n4" position="-0.575 0 -1" scale = ".5 1 1" color="#C6642E"></a-plane>
-			<a-plane mixin="FeelingsIcon" id="n5" position="0 0 -1" scale = ".5 1 1" color="#B4573D"></a-plane>
-			<a-plane mixin="FeelingsIcon" id="n6" position=".575 0 -1" scale = ".5 1 1" color="#A1494C"></a-plane>
-			<a-plane mixin="FeelingsIcon" id="n7" position="1.15 0 -1" scale = ".5 1 1" color="#8E3C5C"></a-plane>
-			<a-plane mixin="FeelingsIcon" id="n8" position="1.725 0 -1" scale = ".5 1 1" color="#7B2E6B"></a-plane>
-			<a-plane mixin="FeelingsIcon" id="n9" position="2.3 0 -1" scale = ".5 1 1" color="#68217A"></a-plane>
+			<a-plane mixin="FeelingsIcon" onmousedown="log1()" position="-2.3 0 -1" scale=".5 1 1" color="#FF8C00"></a-plane>
+			<a-plane mixin="FeelingsIcon" onmousedown="log2()" position="-1.725 0 -1" scale = ".5 1 1" color="#EC7F0F"></a-plane>
+			<a-plane mixin="FeelingsIcon" onmousedown="log3()" position="-1.15 0 -1" scale = ".5 1 1" color="#D9711F"></a-plane>
+			<a-plane mixin="FeelingsIcon" onmousedown="log4()" position="-0.575 0 -1" scale = ".5 1 1" color="#C6642E"></a-plane>
+			<a-plane mixin="FeelingsIcon" onmousedown="log5()" position="0 0 -1" scale = ".5 1 1" color="#B4573D"></a-plane>
+			<a-plane mixin="FeelingsIcon" onmousedown="log6()" position=".575 0 -1" scale = ".5 1 1" color="#A1494C"></a-plane>
+			<a-plane mixin="FeelingsIcon" onmousedown="log7()" position="1.15 0 -1" scale = ".5 1 1" color="#8E3C5C"></a-plane>
+			<a-plane mixin="FeelingsIcon" onmousedown="log8()" position="1.725 0 -1" scale = ".5 1 1" color="#7B2E6B"></a-plane>
+			<a-plane mixin="FeelingsIcon" onmousedown="log9()" position="2.3 0 -1" scale = ".5 1 1" color="#68217A"></a-plane>
         </a-entity>
 	
     	<a-entity camera="active: true" look-controls></a-entity>																							
@@ -125,25 +125,25 @@
 				}
 			]
 	
-			var p1 = document.getElementById('p1');
-			var p2 = document.getElementById('p2');
-			var p3 = document.getElementById('p3');
-			var p4 = document.getElementById('p4');
-			var p5 = document.getElementById('p5');
-			var p6 = document.getElementById('p6');
-			var p7 = document.getElementById('p7');
-			var p8 = document.getElementById('p8');
-			var p9 = document.getElementById('p9');
+			// var p1 = document.getElementById('p1');
+			// var p2 = document.getElementById('p2');
+			// var p3 = document.getElementById('p3');
+			// var p4 = document.getElementById('p4');
+			// var p5 = document.getElementById('p5');
+			// var p6 = document.getElementById('p6');
+			// var p7 = document.getElementById('p7');
+			// var p8 = document.getElementById('p8');
+			// var p9 = document.getElementById('p9');
 
-			var n1 = document.getElementById('n1');
-			var n2 = document.getElementById('n2');
-			var n3 = document.getElementById('n3');
-			var n4 = document.getElementById('n4');
-			var n5 = document.getElementById('n5');
-			var n6 = document.getElementById('n6');
-			var n7 = document.getElementById('n7');
-			var n8 = document.getElementById('n8');
-			var n9 = document.getElementById('n9');
+			// var n1 = document.getElementById('n1');
+			// var n2 = document.getElementById('n2');
+			// var n3 = document.getElementById('n3');
+			// var n4 = document.getElementById('n4');
+			// var n5 = document.getElementById('n5');
+			// var n6 = document.getElementById('n6');
+			// var n7 = document.getElementById('n7');
+			// var n8 = document.getElementById('n8');
+			// var n9 = document.getElementById('n9');
 			// // video.play();
 
 			
@@ -167,45 +167,85 @@
 			// });
 			
 			var bugout = new debugout();
-			var p1 = document.getElementById('p1');
-			var p2 = document.getElementById('p2');
-			var p3 = document.getElementById('p3');
-			var p4 = document.getElementById('p4');
-			var p5 = document.getElementById('p5');
-			var p6 = document.getElementById('p6');
-			var p7 = document.getElementById('p7');
-			var p8 = document.getElementById('p8');
-			var p9 = document.getElementById('p9');
+			// var p1 = document.getElementById('p1');
+			// var p2 = document.getElementById('p2');
+			// var p3 = document.getElementById('p3');
+			// var p4 = document.getElementById('p4');
+			// var p5 = document.getElementById('p5');
+			// var p6 = document.getElementById('p6');
+			// var p7 = document.getElementById('p7');
+			// var p8 = document.getElementById('p8');
+			// var p9 = document.getElementById('p9');
 
-			var n1 = document.getElementById('n1');
-			var n2 = document.getElementById('n2');
-			var n3 = document.getElementById('n3');
-			var n4 = document.getElementById('n4');
-			var n5 = document.getElementById('n5');
-			var n6 = document.getElementById('n6');
-			var n7 = document.getElementById('n7');
-			var n8 = document.getElementById('n8');
-			var n9 = document.getElementById('n9');
-			p1.setAttribute("onmousedown", function() {bugout.log(1)})
-			p2.setAttribute("onmousedown", function() {bugout.log(2)})
-			p3.setAttribute("onmousedown", function() {bugout.log(3)})
-			p4.setAttribute("onmousedown", function() {bugout.log(4)})
-			p5.setAttribute("onmousedown", function() {bugout.log(5)})
-			p6.setAttribute("onmousedown", function() {bugout.log(6)})
-			p7.setAttribute("onmousedown", function() {bugout.log(7)})
-			p8.setAttribute("onmousedown", function() {bugout.log(8)})
-			p9.setAttribute("onmousedown", function() {bugout.log(9)})
-			n1.setAttribute("onmousedown", function() {bugout.log(1)})
-			n2.setAttribute("onmousedown", function() {bugout.log(2)})
-			n3.setAttribute("onmousedown", function() {bugout.log(3)})
-			n4.setAttribute("onmousedown", function() {bugout.log(4)})
-			n5.setAttribute("onmousedown", function() {bugout.log(5)})
-			n6.setAttribute("onmousedown", function() {bugout.log(6)})
-			n7.setAttribute("onmousedown", function() {bugout.log(7)})
-			n8.setAttribute("onmousedown", function() {bugout.log(8)})
-			n9.setAttribute("onmousedown", function() {bugout.log(9)})
-			setTimeout(startTest, 10 * 1000);
+			// var n1 = document.getElementById('n1');
+			// var n2 = document.getElementById('n2');
+			// var n3 = document.getElementById('n3');
+			// var n4 = document.getElementById('n4');
+			// var n5 = document.getElementById('n5');
+			// var n6 = document.getElementById('n6');
+			// var n7 = document.getElementById('n7');
+			// var n8 = document.getElementById('n8');
+			// var n9 = document.getElementById('n9');
+			// p1.setAttribute("onmousedown", function() {bugout.log(1)})
+			// p2.setAttribute("onmousedown", function() {bugout.log(2)})
+			// p3.setAttribute("onmousedown", function() {bugout.log(3)})
+			// p4.setAttribute("onmousedown", function() {bugout.log(4)})
+			// p5.setAttribute("onmousedown", function() {bugout.log(5)})
+			// p6.setAttribute("onmousedown", function() {bugout.log(6)})
+			// p7.setAttribute("onmousedown", function() {bugout.log(7)})
+			// p8.setAttribute("onmousedown", function() {bugout.log(8)})
+			// p9.setAttribute("onmousedown", function() {bugout.log(9)})
+			// n1.setAttribute("onmousedown", function() {bugout.log(1)})
+			// n2.setAttribute("onmousedown", function() {bugout.log(2)})
+			// n3.setAttribute("onmousedown", function() {bugout.log(3)})
+			// n4.setAttribute("onmousedown", function() {bugout.log(4)})
+			// n5.setAttribute("onmousedown", function() {bugout.log(5)})
+			// n6.setAttribute("onmousedown", function() {bugout.log(6)})
+			// n7.setAttribute("onmousedown", function() {bugout.log(7)})
+			// n8.setAttribute("onmousedown", function() {bugout.log(8)})
+			// n9.setAttribute("onmousedown", function() {bugout.log(9)})
+			setTimeout(startTest, 1 * 1000);
 			//Change second number equal to the number of seconds the video will last for.
+
+			function log1() {
+				bugout.log(1)
+			}
+
+			function log2() {
+				bugout.log(2)
+			}
+
+			function log3() {
+				bugout.log(3)
+			}
+
+			function log4() {
+				bugout.log(4)
+			}
+
+
+			function log5() {
+				bugout.log(5)
+			}
+
+
+			function log6() {
+				bugout.log(6)
+			}
+
+
+			function log7() {
+				bugout.log(7)
+			}
+
+			function log8() {
+				bugout.log(8)
+			}
+
+
+			function log9() {
+				bugout.log(9)
+			}
 			
 			//#9
 			function showCross() {
