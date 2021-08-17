@@ -28,13 +28,12 @@
 			<video id="SphereVideo" crossorigin="anonymous" autoplay loop src="" webkit-playsinline ></video>
 		</a-assets>
 
-		<!-- <a-entity oculus-touch-controls="hand: right" triggerdown-logging></a-entity>
-		<a-entity laser-controls="hand: right"></a-entity> -->
+		<a-entity oculus-touch-controls="hand: right" triggerdown-logging></a-entity>
+		<a-entity laser-controls="hand: right"></a-entity>
 	
 		<a-sky id="WhiteSky" color="black" radius="50" visible="false">
 			<a-entity position="-0.449 2.336 -6.724" rotation="0 -180 0" scale="10 10 10" geometry="primitive:plane" material="transparent:true;shader:flat"></a-entity>
 		</a-sky>
-	
 	
 		<a-videosphere id="vidsphere" src="#SphereVideo" geometry="radius:500"></a-videosphere>
 	
@@ -128,21 +127,21 @@
 			// var video = document.getElementById('vidsphere');
 			// video.play();
 
-			AFRAME.registerComponent('triggerdown-logging',{
-				init: () => {
-					this.el.addEventListener('triggerdown', this.logThumbstick);
-				},
-				logThumbstick: (evt) => {
-					console.log(evt)
-					// if (evt.detail.y > 0.95) { console.log("DOWN"); }
-					// if (evt.detail.y < -0.95) { console.log("UP"); }
-					// if (evt.detail.x < -0.95) { console.log("LEFT"); }
-					// if (evt.detail.x > 0.95) { console.log("RIGHT"); }
-				}
-			});
+			// AFRAME.registerComponent('triggerdown-logging',{
+			// 	init: () => {
+			// 		this.el.addEventListener('triggerdown', this.logThumbstick);
+			// 	},
+			// 	logThumbstick: (evt) => {
+			// 		console.log(evt)
+			// 		// if (evt.detail.y > 0.95) { console.log("DOWN"); }
+			// 		// if (evt.detail.y < -0.95) { console.log("UP"); }
+			// 		// if (evt.detail.x < -0.95) { console.log("LEFT"); }
+			// 		// if (evt.detail.x > 0.95) { console.log("RIGHT"); }
+			// 	}
+			// });
 			
 			var bugout = new debugout();
-			setTimeout(startTest, 1 * 1000);
+			setTimeout(startTest, 2 * 1000);
 			//Change second number equal to the number of seconds the video will last for.
 			
 			//#9
