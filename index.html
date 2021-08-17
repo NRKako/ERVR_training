@@ -29,8 +29,8 @@
 			<video id="SphereVideo" crossorigin="anonymous" autoplay loop src="" webkit-playsinline ></video>
 		</a-assets>
 
-		<a-entity oculus-touch-controls="hand: right" triggerdown-logging></a-entity>
-		<a-entity laser-controls="hand: right"></a-entity>
+		<!-- <a-entity oculus-touch-controls="hand: right" triggerdown-logging></a-entity>
+		<a-entity laser-controls="hand: right"></a-entity> -->
 	
 		<a-sky id="WhiteSky" color="black" radius="50" visible="false">
 			<a-entity position="-0.449 2.336 -6.724" rotation="0 -180 0" scale="10 10 10" geometry="primitive:plane" material="transparent:true;shader:flat"></a-entity>
@@ -128,38 +128,38 @@
 			// var video = document.getElementById('vidsphere');
 			// video.play();
 
-			// AFRAME.registerComponent('triggerdown-logging',{
-			// 	init: () => {
-			// 		this.el.addEventListener('triggerdown', this.logThumbstick);
-			// 	},
-			// 	logThumbstick: (evt) => {
-			// 		console.log(evt)
-			// 		// if (evt.detail.y > 0.95) { console.log("DOWN"); }
-			// 		// if (evt.detail.y < -0.95) { console.log("UP"); }
-			// 		// if (evt.detail.x < -0.95) { console.log("LEFT"); }
-			// 		// if (evt.detail.x > 0.95) { console.log("RIGHT"); }
-			// 	}
-			// });
+			AFRAME.registerComponent('triggerdown-logging',{
+				init: () => {
+					this.el.addEventListener('triggerdown', this.logThumbstick);
+				},
+				logThumbstick: (evt) => {
+					console.log(evt)
+					// if (evt.detail.y > 0.95) { console.log("DOWN"); }
+					// if (evt.detail.y < -0.95) { console.log("UP"); }
+					// if (evt.detail.x < -0.95) { console.log("LEFT"); }
+					// if (evt.detail.x > 0.95) { console.log("RIGHT"); }
+				}
+			});
 			
 			var bugout = new debugout();
 			setTimeout(startTest, 10 * 1000);
 			//Change second number equal to the number of seconds the video will last for.
 			
 			//#9
-			const showCross = () => {
+			function showCross() {
 				var fixcross = document.getElementById('fixationcross');
 				fixcross.setAttribute('scale', '1 1 1');
 				setTimeout(hideCross, 9 * 1000);
 			}
 			
 			//#10
-			const hideCross = () => {
+			function hideCross() {
 				var fixcross = document.getElementById('fixationcross');
 				fixcross.setAttribute('scale', '0 0 0');
 			}
 			
 			//#1
-			const instruct = (img, num) => {
+			function instruct(img, num) {
 				var rnum = Math.floor(Math.random()*2);
 				var skybox = document.getElementById('WhiteSky');
 				var task = namelist[num-1].substring(namelist[num-1].length-4,namelist[num-1].length);
@@ -170,19 +170,19 @@
 					skybox.setAttribute('color', 'green');
 					var look = document.getElementById('instrLOOK');
 					look.setAttribute('scale', '5 5 5');
-					setTimeout(() => hideInstruct(img, num, 'LOOK'), 2 * 1000);
+					setTimeout(function() {hideInstruct(img, num, 'LOOK')}, 2 * 1000);
 				}
 				else{
 					bugout.log('DECREASE');
 					skybox.setAttribute('color', 'blue');
 					var decrease = document.getElementById('instrDECREASE');
 					decrease.setAttribute('scale', '5 5 5');
-					setTimeout(() => hideInstruct(img, num, 'DECREASE'), 2 * 1000);
+					setTimeout(function() {hideInstruct(img, num, 'DECREASE')}, 2 * 1000);
 				}
 			}
 			
 			//#2
-			const hideInstruct = (img, num, inst) => {
+			function hideInstruct(img, num, inst) {
 				var skybox = document.getElementById('WhiteSky');
 				skybox.setAttribute('color', 'black');
 				var insttxt = document.getElementById('instr' + inst);
@@ -191,29 +191,29 @@
 			}
 			
 			//#6
-			const hideRatingNeg = (num) => {
+			function hideRatingNeg(num) {
 				var feelindicator = document.getElementById('FeelingsNeg');
 				feelindicator.setAttribute('scale', '0 0 0');
 				showRatingPos(num);
 			}
 
 			//#5
-			const showRatingNeg = (num) => {
+			function showRatingNeg(num) {
 				bugout.log('Negative Rating Image ' + num); 
 				var feelindicator = document.getElementById('FeelingsNeg');
 				feelindicator.setAttribute('scale', '1 1 1');
-				setTimeout(() => hideRatingNeg(num), 3 * 1000);
+				setTimeout(function() {hideRatingNeg(num)}, 3 * 1000);
 			}
 
 			//#8
-			const hideRatingPos = () => {
+			function hideRatingPos() {
 				var feelindicator = document.getElementById('FeelingsPos');
 				feelindicator.setAttribute('scale', '0 0 0');
 				showCross();
 			}
 
 			//#7
-			const showRatingPos = (num) => {
+			function showRatingPos(num) {
 				bugout.log('Positive Rating Image ' + num); 
 				var feelindicator = document.getElementById('FeelingsPos');
 				feelindicator.setAttribute('scale', '1 1 1');
@@ -222,7 +222,7 @@
 			
 
 			//#4
-			const hidePicture = (img, num, inst) => {
+			function hidePicture(img, num, inst) {
 				var picture = document.getElementById(String(img));
 				var pictureborder = document.getElementById('picturebox' + inst);
 				picture.setAttribute('scale', '0 0 0');
@@ -231,21 +231,21 @@
 			}
 
 			//#3
-			const showPicture = (img, num, inst) => {			
+			function showPicture(img, num, inst) {			
 				var pictureholder = document.getElementById(img.toString());	
 				var pictureborder = document.getElementById('picturebox' + inst);
 				pictureholder.setAttribute('scale', '5 5 5');
 				pictureborder.setAttribute('scale', '1.2 1.2 1.2');				
 
-				setTimeout(() => hidePicture(img, num, inst), 8 * 1000);
+				setTimeout(function() {hidePicture(img, num, inst)}, 8 * 1000);
 			}
 		
 			var namelist = [];
 			var picturelist = [];
 			var picnum = 0;
-			const startTest = () => {	
+			function startTest() {	
 		
-				images.forEach(img => {
+				images.forEach(function(img) {
 					$('a-assets').append( `<img id ='k${img.imgNum}' crossorigin='anonymous' preload='auto' src='${img.imgURL}'>` );
 					$('a-scene').append(`<a-entity id='p${img.imgNum}' position='0 1 -4' scale='0 0 0' rotation='0 0 0'><a-entity mixin='TestImage' position='0 0.25 0' scale = '1 1 1' material='src:#k${img.imgNum};'></a-entity> </a-entity>`);
 					// let temp = "p" + picnum;
@@ -268,13 +268,13 @@
 			}
 		
 			
-			const startToo = () => {
-				picturelist.forEach(element => { 
+			function startToo() {
+				picturelist.forEach(function(element) { 
 						//this is the timeout for setting each new picture cycle. currently set to 25 second test cycles.
-						setTimeout(() => instruct(element, picturelist.indexOf(element)+1), 25 * (picturelist.indexOf(element)+1) * 1000);
+						setTimeout(function() {instruct(element, picturelist.indexOf(element)+1)}, 25 * (picturelist.indexOf(element)+1) * 1000);
 					})
 				//each test takes 25 seconds, with no delay in between. need an extra 25 seconds at the end for the last test to complete.
-				setTimeout(() => alert("This is the end of the VR task. Please save the data."), (picnum * 25 * 1000) + 25000);
+				setTimeout(function() {alert("This is the end of the VR task. Please save the data.")}, (picnum * 25 * 1000) + 25000);
 			}
 			
 			//Below this point contains the method for ending the test and giving the data
