@@ -207,7 +207,8 @@
 			// setTimeout(startTest, 1 * 1000);
 			//Change second number equal to the number of seconds the video will last for.
 
-			function log1() {
+			function log1(event) {
+				console.log(event)
 				bugout.log(1)
 			}
 
@@ -247,24 +248,24 @@
 				bugout.log(9)
 			}
 
-			p1.setAttribute("onmousedown", log1())
-			p2.setAttribute("onmousedown", log2())
-			p3.setAttribute("onmousedown", log3())
-			p4.setAttribute("onmousedown", log4())
-			p5.setAttribute("onmousedown", log5())
-			p6.setAttribute("onmousedown", log6())
-			p7.setAttribute("onmousedown", log7())
-			p8.setAttribute("onmousedown", log8())
-			p9.setAttribute("onmousedown", log9())
-			n1.setAttribute("onmousedown", log1())
-			n2.setAttribute("onmousedown", log2())
-			n3.setAttribute("onmousedown", log3())
-			n4.setAttribute("onmousedown", log4())
-			n5.setAttribute("onmousedown", log5())
-			n6.setAttribute("onmousedown", log6())
-			n7.setAttribute("onmousedown", log7())
-			n8.setAttribute("onmousedown", log8())
-			n9.setAttribute("onmousedown", log9())
+			p1.setAttribute("onmousedown", log1)
+			p2.setAttribute("onmousedown", log2)
+			p3.setAttribute("onmousedown", log3)
+			p4.setAttribute("onmousedown", log4)
+			p5.setAttribute("onmousedown", log5)
+			p6.setAttribute("onmousedown", log6)
+			p7.setAttribute("onmousedown", log7)
+			p8.setAttribute("onmousedown", log8)
+			p9.setAttribute("onmousedown", log9)
+			n1.setAttribute("onmousedown", log1)
+			n2.setAttribute("onmousedown", log2)
+			n3.setAttribute("onmousedown", log3)
+			n4.setAttribute("onmousedown", log4)
+			n5.setAttribute("onmousedown", log5)
+			n6.setAttribute("onmousedown", log6)
+			n7.setAttribute("onmousedown", log7)
+			n8.setAttribute("onmousedown", log8)
+			n9.setAttribute("onmousedown", log9)
 			setTimeout(startTest, 5 * 1000);
 			
 			//#9
