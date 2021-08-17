@@ -1,53 +1,42 @@
 <!DOCTYPE html>
-
 <html>
+	<head>
+		<meta name="apple-mobile-web-app-capable" content="yes">
 
-  <head>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <script src="images.js"></script>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-	<script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
-    <script src="VRController.js"></script>
-	<script src="debugout.js"></script>
-	<script src="download.js"></script>
-	<script src="jquery-3.6.0.js"></script>
-	<meta content = "text/html; charset=utf-8" http-equiv="Content-Type">
-	  <meta content = "utf-8" http-equiv="encoding">
-  </head>
+		<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+		<script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+		<script src="VRController.js"></script>
+		<script src="debugout.js"></script>
+		<script src="download.js"></script>
+		<script src="jquery-3.6.0.js"></script>
 
-  <body>
-   
-    
-<a-scene id="scenes" vr-mode-ui inspector keyboard-shortcuts screenshot device-orientation-permission-ui>
+		<meta content = "text/html; charset=utf-8" http-equiv="Content-Type">
+		<meta content = "utf-8" http-equiv="encoding">
+	</head>
+
+  	<body>
+	<a-scene id="scenes" vr-mode-ui inspector keyboard-shortcuts screenshot device-orientation-permission-ui>
       
 	 
-	<a-assets>
+		<a-assets>
+			<a-entity oculus-touch-controls="hand: right" triggerdown-logging></a-entity>
+			<a-entity laser-controls="hand: right"></a-entity>
+
+			<a-mixin id="FeelingsIcon" geometry="primitive:plane;height:1" material="transparent:true;shader:flat" event-set__1="_event: mouseenter; geometry.height: 1.6" event-set__2="_event: mouseleave; geometry.height: 1"></a-mixin>
+			<a-mixin id="TestImage" geometry="primitive:plane;height:1" material="transparent:true;shader:flat"></a-mixin>
+
+			<video id="SphereVideo" crossorigin="anonymous" autoplay loop src="" webkit-playsinline ></video>
+		</a-assets>
+
+		<!-- <a-entity oculus-touch-controls="hand: right" triggerdown-logging></a-entity>
+		<a-entity laser-controls="hand: right"></a-entity> -->
 	
-		
-        <a-entity oculus-touch-controls="hand: right"></a-entity>
-        <a-entity laser-controls="hand: right"></a-entity>
-
-        <a-mixin id="FeelingsIcon" geometry="primitive:plane;height:1" material="transparent:true;shader:flat" event-set__1="_event: mouseenter; geometry.height: 1.6" event-set__2="_event: mouseleave; geometry.height: 1"></a-mixin>
-
-		<a-mixin id="TestImage" geometry="primitive:plane;height:1" material="transparent:true;shader:flat"></a-mixin>
-
-		<video id="SphereVideo" crossorigin="anonymous" autoplay loop src="" webkit-playsinline ></video>
-    
-      </a-assets>
-
-		
-	
-    <a-entity oculus-touch-controls="hand: right"></a-entity>
-    <a-entity laser-controls="hand: right"></a-entity>
-	
-
-
-	<a-sky id="WhiteSky" color="black" radius="50" visible="false">
-        <a-entity position="-0.449 2.336 -6.724" rotation="0 -180 0" scale="10 10 10" geometry="primitive:plane" material="transparent:true;shader:flat"></a-entity>
-	</a-sky>
+		<a-sky id="WhiteSky" color="black" radius="50" visible="false">
+			<a-entity position="-0.449 2.336 -6.724" rotation="0 -180 0" scale="10 10 10" geometry="primitive:plane" material="transparent:true;shader:flat"></a-entity>
+		</a-sky>
 	
 	
-	<a-videosphere id="vidsphere" src="#SphereVideo" geometry="radius:500"></a-videosphere>
+		<a-videosphere id="vidsphere" src="#SphereVideo" geometry="radius:500"></a-videosphere>
 	
 		<a-entity id="fixationcross" position="0 1.5 -4" scale="0 0 0" rotation="0 0 0">
 			<a-plane id = "cross" position="0 0 0" rotation="0 0 0" width="2" height=".05" color="orange"></a-plane>
@@ -105,217 +94,204 @@
 			<a-plane mixin="FeelingsIcon" onmousedown=bugout.log("p9") position="2.3 0 -1" scale = ".5 1 1" color="#68217A"></a-plane>
         </a-entity>
 	
-    <a-entity camera="active: true" look-controls>
-	
-	</a-entity>																							
+    	<a-entity camera="active: true" look-controls></a-entity>																							
 		
     </a-scene>
 
 	<script>
-	"use strict";
-    $(document).ready(function () {
-var images = [
-    {
-        "imgNum": 0,
-        "imgName": "01-1052-LOOK.jpg",
-        "imgURL": "https://testervr.s3.us-west-1.amazonaws.com/training_stimuli/1052.jpg"
-    }, {
-        "imgNum": 1,
-        "imgName": "02-1270-DECR.jpg",
-        "imgURL": "https://testervr.s3.us-west-1.amazonaws.com/training_stimuli/1270.jpg"
-    }, {
-        "imgNum": 2,
-        "imgName": "03-212-DECR.jpg",
-        "imgURL": "https://testervr.s3.us-west-1.amazonaws.com/training_stimuli/2120.jpg"
-    }, {
-        "imgNum": 3,
-        "imgName": "04-5740-LOOK.jpg",
-        "imgURL": "https://testervr.s3.us-west-1.amazonaws.com/training_stimuli/5740.jpg"
-    }, {
-        "imgNum": 4,
-        "imgName": "05-7006-LOOK.jpg",
-        "imgURL": "https://testervr.s3.us-west-1.amazonaws.com/training_stimuli/7006.jpg"
-    }
-]
+		"use strict";
+    	$(document).ready(() => {
+			var images = [
+				{
+					"imgNum": 0,
+					"imgName": "01-1052-LOOK.jpg",
+					"imgURL": "https://testervr.s3.us-west-1.amazonaws.com/training_stimuli/1052.jpg"
+				}, {
+					"imgNum": 1,
+					"imgName": "02-1270-DECR.jpg",
+					"imgURL": "https://testervr.s3.us-west-1.amazonaws.com/training_stimuli/1270.jpg"
+				}, {
+					"imgNum": 2,
+					"imgName": "03-212-DECR.jpg",
+					"imgURL": "https://testervr.s3.us-west-1.amazonaws.com/training_stimuli/2120.jpg"
+				}, {
+					"imgNum": 3,
+					"imgName": "04-5740-LOOK.jpg",
+					"imgURL": "https://testervr.s3.us-west-1.amazonaws.com/training_stimuli/5740.jpg"
+				}, {
+					"imgNum": 4,
+					"imgName": "05-7006-LOOK.jpg",
+					"imgURL": "https://testervr.s3.us-west-1.amazonaws.com/training_stimuli/7006.jpg"
+				}
+			]
 	
-		var video = document.getElementById('vidsphere');
-		video.play();
-		
-		var bugout = new debugout();
-		setTimeout(startTest, 1 * 1000);
-		//Change second number equal to the number of seconds the video will last for.
-		
-		//#9
-		function showCross(){
-			var fixcross = document.getElementById('fixationcross');
-			fixcross.setAttribute('scale', '1 1 1');
-			setTimeout(hideCross, 9 * 1000);
-		}
-		
-		//#10
-		function hideCross(){
-			var fixcross = document.getElementById('fixationcross');
-			fixcross.setAttribute('scale', '0 0 0');
-		}
-		
-		//#1
-		function instruct(img, num){
-			var rnum = Math.floor(Math.random()*2);
-			var skybox = document.getElementById('WhiteSky');
-			var task = namelist[num-1].substring(namelist[num-1].length-4,namelist[num-1].length);
-      console.log("task", task)
-			if (task == 'LOOK'){
-				bugout.log('LOOK');
-				skybox.setAttribute('color', 'green');
-				var look = document.getElementById('instrLOOK');
-				look.setAttribute('scale', '5 5 5');
-				setTimeout(function() {hideInstruct(img, num, 'LOOK');}, 2 * 1000);
+			// var video = document.getElementById('vidsphere');
+			// video.play();
+
+			AFRAME.registerComponent('triggerdown-logging',{
+				init: () => {
+					this.el.addEventListener('triggerdown', this.logThumbstick);
+				},
+				logThumbstick: (evt) => {
+					console.log(evt)
+					// if (evt.detail.y > 0.95) { console.log("DOWN"); }
+					// if (evt.detail.y < -0.95) { console.log("UP"); }
+					// if (evt.detail.x < -0.95) { console.log("LEFT"); }
+					// if (evt.detail.x > 0.95) { console.log("RIGHT"); }
+				}
+			});
+			
+			var bugout = new debugout();
+			setTimeout(startTest, 1 * 1000);
+			//Change second number equal to the number of seconds the video will last for.
+			
+			//#9
+			const showCross = () => {
+				var fixcross = document.getElementById('fixationcross');
+				fixcross.setAttribute('scale', '1 1 1');
+				setTimeout(hideCross, 9 * 1000);
 			}
-			else{
-				bugout.log('DECREASE');
-				skybox.setAttribute('color', 'blue');
-				var decrease = document.getElementById('instrDECREASE');
-				decrease.setAttribute('scale', '5 5 5');
-				setTimeout(function() {hideInstruct(img, num, 'DECREASE');}, 2 * 1000);
+			
+			//#10
+			const hideCross = () => {
+				var fixcross = document.getElementById('fixationcross');
+				fixcross.setAttribute('scale', '0 0 0');
 			}
-		}
-		
-		//#2
-		function hideInstruct(img, num, inst){
-			var skybox = document.getElementById('WhiteSky');
-			skybox.setAttribute('color', 'black');
-			var insttxt = document.getElementById('instr' + inst);
-			insttxt.setAttribute('scale', '0 0 0');
-			showPicture(img, num, inst)
-		}
-		
-		//#6
-		function hideRatingNeg(num) {
-			var feelindicator = document.getElementById('FeelingsNeg');
-			feelindicator.setAttribute('scale', '0 0 0');
-			showRatingPos(num);
-		}
-
-		//#5
-		function showRatingNeg(num) {
-			bugout.log('Negative Rating Image ' + num); 
-			var feelindicator = document.getElementById('FeelingsNeg');
-			feelindicator.setAttribute('scale', '1 1 1');
-			setTimeout(function() {hideRatingNeg(num);}, 3 * 1000);
-		}
-
-		//#8
-		function hideRatingPos() {
-			var feelindicator = document.getElementById('FeelingsPos');
-			feelindicator.setAttribute('scale', '0 0 0');
-			showCross();
-		}
-
-		//#7
-		function showRatingPos(num) {
-			bugout.log('Positive Rating Image ' + num); 
-			var feelindicator = document.getElementById('FeelingsPos');
-			feelindicator.setAttribute('scale', '1 1 1');
-			setTimeout(hideRatingPos, 3 * 1000);
-		}		
-		
-
-		//#4
-		function hidePicture(img, num, inst) {
-			var picture = document.getElementById(String(img));
-			var pictureborder = document.getElementById('picturebox' + inst);
-			picture.setAttribute('scale', '0 0 0');
-			pictureborder.setAttribute('scale', '0 0 0');
-			showRatingNeg(num)
-		}
-
-		//#3
-		function showPicture(img, num, inst){			
-			var pictureholder = document.getElementById(img.toString());	
-			var pictureborder = document.getElementById('picturebox' + inst);
-			pictureholder.setAttribute('scale', '5 5 5');
-			pictureborder.setAttribute('scale', '1.2 1.2 1.2');				
-
-			setTimeout(function() {hidePicture(img, num, inst);}, 8 * 1000);
-		}
-		
-		var namelist = [];
-		var picturelist = [];
-		var picnum = 0;
-		function startTest(){	
-			// $.ajax({
-			// 	url : "/assets/",
-			// // async: false,
-			// 	success: function (data) {
-			// 		$(data).find("a").attr("href", function (i, val) {
-			// console.log(val)
-			// 			if( val.match(/.(jpe?g|png|gif)$/) ) { 							
-			// 				$('a-assets').append( "<img id ='k" + i + "' crossorigin='anonymous' preload='auto' src='/assets/" + val + "'>" );
-			// 				$('a-scene').append("<a-entity id='p" + i + "' position='0 1 -4' scale='0 0 0' rotation='0 0 0'><a-entity mixin='TestImage' position='0 0.25 0' scale = '1 1 1' material='src:#k" + i + ";'></a-entity> </a-entity>");
-			// 				let temp = "p" + picnum;
-			// 				picturelist.push(temp);
-			// 				namelist.push(val);
-			// 				picnum++;
-			// 			} 
-			// 		});
-			// 	}
-			// });
-      
-      images.forEach(img => {
-        $('a-assets').append( `<img id ='k${img.imgNum}' crossorigin='anonymous' preload='auto' src='${img.imgURL}'>` );
-        $('a-scene').append(`<a-entity id='p${img.imgNum}' position='0 1 -4' scale='0 0 0' rotation='0 0 0'><a-entity mixin='TestImage' position='0 0.25 0' scale = '1 1 1' material='src:#k${img.imgNum};'></a-entity> </a-entity>`);
-        // let temp = "p" + picnum;
-        picturelist.push(`p${img.imgNum}`);
-        namelist.push(img.imgName.substring(0, img.imgName.length-4));
-        picnum++;
-      })
-      console.log("picture list: ", picturelist, "name list: ", namelist)
-      
 			
-		
-			//pause video
-			// var video = document.getElementById('SphereVideo');
-			video.pause()
-			//hide video with skybox
-			var skybox = document.getElementById('WhiteSky');
-			skybox.setAttribute('color', 'black');
-			skybox.setAttribute('visible', 'true');
-			
-			//needs some delay to allow images to be added to the list
-			setTimeout(startToo, 1000);
-		}
-    
-		 
-		function startToo(){
-			picturelist.forEach(function(element){ 
-					//this is the timeout for setting each new picture cycle. currently set to 25 second test cycles.
-					setTimeout(function(){instruct(element, picturelist.indexOf(element)+1);}, 25 * (picturelist.indexOf(element)+1) * 1000);
-				})
-			//each test takes 25 seconds, with no delay in between. need an extra 25 seconds at the end for the last test to complete.
-			setTimeout(function() { alert("This is the end of the VR task. Please save the data.");}, (picnum * 25 * 1000) + 25000);
-		}
-		
-		//Below this point contains the method for ending the test and giving the data
-		var nativeAlert = window.alert;
+			//#1
+			const instruct = (img, num) => {
+				var rnum = Math.floor(Math.random()*2);
+				var skybox = document.getElementById('WhiteSky');
+				var task = namelist[num-1].substring(namelist[num-1].length-4,namelist[num-1].length);
+				console.log("task", task)
 
-		window.alert = function(msg) {
-			nativeAlert(msg);
-			bugout.log('End Of Experiment');
-
-			var currLog = bugout.getLog();
-			download(currLog, "VRData.txt");
-		};
+				if (task == 'LOOK'){
+					bugout.log('LOOK');
+					skybox.setAttribute('color', 'green');
+					var look = document.getElementById('instrLOOK');
+					look.setAttribute('scale', '5 5 5');
+					setTimeout(() => hideInstruct(img, num, 'LOOK'), 2 * 1000);
+				}
+				else{
+					bugout.log('DECREASE');
+					skybox.setAttribute('color', 'blue');
+					var decrease = document.getElementById('instrDECREASE');
+					decrease.setAttribute('scale', '5 5 5');
+					setTimeout(() => hideInstruct(img, num, 'DECREASE'), 2 * 1000);
+				}
+			}
 			
+			//#2
+			const hideInstruct = (img, num, inst) => {
+				var skybox = document.getElementById('WhiteSky');
+				skybox.setAttribute('color', 'black');
+				var insttxt = document.getElementById('instr' + inst);
+				insttxt.setAttribute('scale', '0 0 0');
+				showPicture(img, num, inst)
+			}
+			
+			//#6
+			const hideRatingNeg = (num) => {
+				var feelindicator = document.getElementById('FeelingsNeg');
+				feelindicator.setAttribute('scale', '0 0 0');
+				showRatingPos(num);
+			}
+
+			//#5
+			const showRatingNeg = (num) => {
+				bugout.log('Negative Rating Image ' + num); 
+				var feelindicator = document.getElementById('FeelingsNeg');
+				feelindicator.setAttribute('scale', '1 1 1');
+				setTimeout(() => hideRatingNeg(num), 3 * 1000);
+			}
+
+			//#8
+			const hideRatingPos = () => {
+				var feelindicator = document.getElementById('FeelingsPos');
+				feelindicator.setAttribute('scale', '0 0 0');
+				showCross();
+			}
+
+			//#7
+			const showRatingPos = (num) => {
+				bugout.log('Positive Rating Image ' + num); 
+				var feelindicator = document.getElementById('FeelingsPos');
+				feelindicator.setAttribute('scale', '1 1 1');
+				setTimeout(hideRatingPos, 3 * 1000);
+			}		
+			
+
+			//#4
+			const hidePicture = (img, num, inst) => {
+				var picture = document.getElementById(String(img));
+				var pictureborder = document.getElementById('picturebox' + inst);
+				picture.setAttribute('scale', '0 0 0');
+				pictureborder.setAttribute('scale', '0 0 0');
+				showRatingNeg(num)
+			}
+
+			//#3
+			const showPicture = (img, num, inst) => {			
+				var pictureholder = document.getElementById(img.toString());	
+				var pictureborder = document.getElementById('picturebox' + inst);
+				pictureholder.setAttribute('scale', '5 5 5');
+				pictureborder.setAttribute('scale', '1.2 1.2 1.2');				
+
+				setTimeout(() => hidePicture(img, num, inst), 8 * 1000);
+			}
 		
+			var namelist = [];
+			var picturelist = [];
+			var picnum = 0;
+			const startTest = () => {	
+		
+			images.forEach(img => {
+				$('a-assets').append( `<img id ='k${img.imgNum}' crossorigin='anonymous' preload='auto' src='${img.imgURL}'>` );
+				$('a-scene').append(`<a-entity id='p${img.imgNum}' position='0 1 -4' scale='0 0 0' rotation='0 0 0'><a-entity mixin='TestImage' position='0 0.25 0' scale = '1 1 1' material='src:#k${img.imgNum};'></a-entity> </a-entity>`);
+				// let temp = "p" + picnum;
+				picturelist.push(`p${img.imgNum}`);
+				namelist.push(img.imgName.substring(0, img.imgName.length-4));
+				picnum++;
+			})
+			console.log("picture list: ", picturelist, "name list: ", namelist)
+		
+				
+			
+				//pause video
+				// var video = document.getElementById('SphereVideo');
+				// video.pause()
+				//hide video with skybox
+				var skybox = document.getElementById('WhiteSky');
+				skybox.setAttribute('color', 'black');
+				skybox.setAttribute('visible', 'true');
+				
+				//needs some delay to allow images to be added to the list
+				setTimeout(startToo, 1000);
+			}
+		
+			
+			const startToo = () => {
+				picturelist.forEach(element => { 
+						//this is the timeout for setting each new picture cycle. currently set to 25 second test cycles.
+						setTimeout(() => instruct(element, picturelist.indexOf(element)+1), 25 * (picturelist.indexOf(element)+1) * 1000);
+					})
+				//each test takes 25 seconds, with no delay in between. need an extra 25 seconds at the end for the last test to complete.
+				setTimeout(() => alert("This is the end of the VR task. Please save the data."), (picnum * 25 * 1000) + 25000);
+			}
+			
+			//Below this point contains the method for ending the test and giving the data
+			var nativeAlert = window.alert;
+
+			window.alert = function(msg) {
+				nativeAlert(msg);
+				bugout.log('End Of Experiment');
+
+				var currLog = bugout.getLog();
+				download(currLog, "VRData.txt");
+			};
+				
+			
 		});
 	</script>
-	
 	</body>
-
 </html>
-
-
-
-
-
-}
